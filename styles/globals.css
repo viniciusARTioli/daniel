@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  background: #ffffff;
+  color: #222222;
+}
+
+select,
+input[type="range"],
+button {
+  font-size: 14px;
+}
+
+button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #cccccc;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #f2f2f2;
+}
+
+label {
+  font-size: 13px;
+  color: #555555;
+  display: block;
+  margin-bottom: 6px;
+}
