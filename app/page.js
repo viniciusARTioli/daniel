@@ -3,8 +3,11 @@
 import ReadingPane from "../components/ReadingPane";
 import SettingsPanel from "../components/SettingsPanel";
 
-const SAMPLE_TEXT = `
-<h1>The Last Song</h1>
+// Content only supports h1, h2, h3, p, strong, em — see lib/parseContent.js
+// for why (it's a small regex parser, not a full HTML parser, so it can
+// safely run during Next.js's server-side prerendering).
+const SAMPLE_HTML = `
+ <h1>The Last Song</h1>
 
 <h2>Chapter 1: The Final Match</h2>
 
@@ -387,11 +390,11 @@ export default function HomePage() {
 				padding: "2rem 1rem",
 			}}
 		>
-			<nav style={{flex: 1, minWidth: 960}}>
+			<aside style={{flex: 1, minWidth: 960}}>
 				<SettingsPanel />
-			</nav>
+			</aside>
 			<section style={{flex: 2, minWidth: 960}}>
-				<ReadingPane text={SAMPLE_TEXT} />
+				<ReadingPane html={SAMPLE_HTML} />
 			</section>
 		</main>
 	);
