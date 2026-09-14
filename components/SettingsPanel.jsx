@@ -9,8 +9,8 @@ export default function SettingsPanel() {
 	const {settings, updateSetting, resetSettings} = useReadingSettings();
 
 	return (
-		<div style={{display: "flex", flexWrap: "wrap", flexDirection: "row", gap: 16}}>
-			<div>
+		<div style={{display: "flex", flexWrap: "wrap", flexDirection: "row", justifyContent: "center", alignItems: "center", gap: 16}}>
+			<div style={{width: 160}}>
 				<label htmlFor="font-select">Font</label>
 				<select id="font-select" value={settings.font} onChange={(e) => updateSetting("font", e.target.value)}>
 					{FONT_OPTIONS.map((opt) => (
@@ -21,12 +21,12 @@ export default function SettingsPanel() {
 				</select>
 			</div>
 
-			<div>
+			<div style={{width: 160}}>
 				<label htmlFor="size-range">Font size: {settings.fontSize}px</label>
 				<input id="size-range" type="range" min={16} max={32} step={1} value={settings.fontSize} onChange={(e) => updateSetting("fontSize", Number(e.target.value))} />
 			</div>
 
-			<div>
+			<div style={{width: 160}}>
 				<label htmlFor="lh-range">Line spacing: {settings.lineHeight}</label>
 				<input
 					id="lh-range"
@@ -39,7 +39,7 @@ export default function SettingsPanel() {
 				/>
 			</div>
 
-			<div>
+			<div style={{width: 160}}>
 				<label htmlFor="ls-range">Letter spacing: {settings.letterSpacing}em</label>
 				<input
 					id="ls-range"
@@ -52,7 +52,7 @@ export default function SettingsPanel() {
 				/>
 			</div>
 
-			<div>
+			<div style={{width: 200}}>
 				<label htmlFor="theme-select">Color theme</label>
 				<select id="theme-select" value={settings.theme} onChange={(e) => updateSetting("theme", e.target.value)}>
 					{Object.entries(THEMES).map(([key, theme]) => (
@@ -63,17 +63,17 @@ export default function SettingsPanel() {
 				</select>
 			</div>
 
-			<label style={{display: "flex", alignItems: "center", gap: 8}}>
+			<label style={{display: "flex", alignItems: "center", gap: 8, width: 200}}>
 				<input type="checkbox" checked={settings.bionic} onChange={(e) => updateSetting("bionic", e.target.checked)} />
 				Bionic reading (bold word starts)
 			</label>
 
-			<label style={{display: "flex", alignItems: "center", gap: 8}}>
+			<label style={{display: "flex", alignItems: "center", gap: 8, width: 200}}>
 				<input type="checkbox" checked={settings.ruler} onChange={(e) => updateSetting("ruler", e.target.checked)} />
 				Reading ruler (dims everything but the current line)
 			</label>
 
-			<label style={{display: "flex", alignItems: "center", gap: 8}}>
+			<label style={{display: "flex", alignItems: "center", gap: 8, width: 200}}>
 				<input type="checkbox" checked={settings.syllables} onChange={(e) => updateSetting("syllables", e.target.checked)} />
 				Show syllable breaks
 			</label>
