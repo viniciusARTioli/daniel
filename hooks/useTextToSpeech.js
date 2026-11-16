@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 // Wraps the browser's built-in speechSynthesis API. Free, no backend, but
 // note the 'boundary' event (used for word highlighting) is well supported
@@ -53,6 +53,16 @@ export function useTextToSpeech({ rate = 0.9 } = {}) {
     }
     setIsPlaying(false);
     setActiveWordIndex(-1);
+  }, []);
+
+  // Stop speaking if the component unmounts (e.g. switching to another
+  // story while it is reading aloud), otherwise the voice keeps going.
+  useEffect(() => {
+    return () => {
+      if (typeof window !== "undefined" && window.speechSynthesis) {
+        window.speechSynthesis.cancel();
+      }
+    };
   }, []);
 
   return { speak, stop, isPlaying, activeWordIndex };
